@@ -56,3 +56,10 @@ link.setAttribute('href', 'https://google.com');
 
 // 4
 link.setAttribute('target', '_blank')
+
+// 5
+var navItems = document.getElementsByClassName('nav-item');
+for (i = 0; i < navItems.length; i++) {
+    navItems[i].style.color = 'red';
+}
+// ToDo: check this functionality, CSS is changed, but not displayed though
