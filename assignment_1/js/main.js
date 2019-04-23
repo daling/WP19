@@ -54,3 +54,5 @@ var link = links.item(2);
 link = link.firstChild;
 link.setAttribute('href', 'https://google.com');
 
+// 4
+link.setAttribute('target', '_blank')
