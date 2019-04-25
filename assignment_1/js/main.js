@@ -1,18 +1,15 @@
 window.addEventListener('DOMContentLoaded', main, false);
 
-var index = '/WP19/assignment_1/index.html';
-var second = '/WP19/assignment_1/second.html';
-
 function main(){
     // 1
-    changeTitle(index, 'Webprogramming (LIX019P05) - Index');
-    changeTitle(second, 'Webprogramming (LIX019P05) - Second');
+    changeTitle('index.html', 'Webprogramming (LIX019P05) - Index');
+    changeTitle('second.html', 'Webprogramming (LIX019P05) - Second');
 
     // 2
     var mainCol = document.getElementsByClassName('col-md-12');
     var newArticleHeader = 'This is my second article';
     var newArticleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget eros ultrices, dapibus lacus ultrices, ultrices tortor. Nam tincidunt blandit neque, at ornare sapien ultricies ut. Integer eget ultricies velit. Cras eu tellus ex. Integer bibendum nisi neque, sed auctor odio blandit sit amet. Aenean augue tellus, tincidunt vel commodo bibendum, rutrum nec augue. Donec pulvinar sem in purus congue sodales. Nam magna urna, maximus ut eros vel, rutrum semper sem. Duis a efficitur mauris. Nunc a aliquam nisi, vel iaculis justo. Donec lacus nulla, sollicitudin vitae lectus vel, tempus vestibulum ipsum. In dignissim consequat pellentesque. Pellentesque eget eleifend velit. Aenean aliquam auctor nibh vitae tristique. Nulla facilisi.';
-    addArticle(mainCol, newArticleHeader, newArticleText, index);
+    addArticle(mainCol, newArticleHeader, newArticleText, 'index.html');
 
     // 3
     var link = changeLink();
@@ -32,9 +29,19 @@ function main(){
  * @param title String of the new title.
  */
 function changeTitle(page, title){
-    if (window.location.pathname === page) {
+    if (getFileName() === page) {
         document.title = title;
     }
+}
+
+/**
+ * Takes the window.location.pathname, splits it by the / and returns the last element,
+ * which is the file/page name.
+ * @returns {string} HTML page name.
+ */
+function getFileName() {
+    var pathName = window.location.pathname.split('/');
+    return pathName[pathName.length -1];
 }
 
 // 2
@@ -64,7 +71,7 @@ function addArticle(element, header, text, pagePath) {
     newArticle.appendChild(newHeader);
     newArticle.appendChild(newParagraph);
 
-    if (window.location.pathname === pagePath) {
+    if (getFileName() === pagePath) {
         var pos = element[0];
 
         pos.appendChild(newArticle);
@@ -107,7 +114,7 @@ for (i = 0; i < navItems.length; i++) {
  *
  */
 function addSidebar() {
-    if (window.location.pathname === second) {
+    if (window.location.pathname === 'second.html') {
         var mainColumn = document.getElementsByClassName('col-md-12');
         for (i = 0; i < mainColumn.length; i++) {
             mainColumn[i].className = 'col-md-8';
