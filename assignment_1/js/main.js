@@ -118,16 +118,21 @@ function redMaker(className) {
 // }
 
 /**
- *
+ * Creates a new row-div, changes the col-class so the sidebar will fit, creates the
+ * sidebar div and its header, and appends everything to the container of the second page.
  */
 function addSidebar() {
-    if (window.location.pathname === 'second.html') {
-        var mainColumn = document.getElementsByClassName('col-md-12');
-        for (i = 0; i < mainColumn.length; i++) {
-            mainColumn[i].className = 'col-md-8';
-        }
-        var cont = document.getElementsByClassName('container');
+    if (getFileName() === 'second.html') {
+        // Create a row
+        var newRow = document.createElement('div');
+        newRow.className = 'row';
 
+        // Change col class and move the div
+        var mainColumn = document.getElementsByClassName('col-md-12');
+        mainColumn[0].className = 'col-md-8';
+        newRow.appendChild(document.getElementsByClassName('col-md-8')[0]);
+
+        // Create the sidebar div
         var newCol = document.createElement('div');
         newCol.className = 'col-md-4';
         var newHeader = document.createElement('h1');
@@ -135,14 +140,9 @@ function addSidebar() {
         newHeader.appendChild(newHeaderText);
         newCol.appendChild(newHeader);
 
-        var newRow = document.createElement('div');
-        newRow.className = 'row';
-
-        //newRow.appendChild(mainColumn);
+        // Append everything to the container
         newRow.appendChild(newCol);
-
-        var pos = cont[0];
-
+        var pos = document.getElementsByClassName('container')[0];
         pos.appendChild(newRow);
     }
 }
