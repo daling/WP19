@@ -1,11 +1,40 @@
+window.addEventListener('DOMContentLoaded', main, false);
+
 var index = '/WP19/assignment_1/index.html';
 var second = '/WP19/assignment_1/second.html';
 
-// 1 Changes the document title depending on which page you are
-if (window.location.pathname === index) {
-    document.title = 'Webprogramming (LIX019P05) - Index';
-} else if (window.location.pathname === second) {
-    document.title = 'Webprogramming (LIX019P05) - Second';
+function main(){
+    // 1
+    changeTitle(index, 'Webprogramming (LIX019P05) - Index');
+    changeTitle(second, 'Webprogramming (LIX019P05) - Second');
+
+    // 2
+    var mainCol = document.getElementsByClassName('col-md-12');
+    var newArticleHeader = 'This is my second article';
+    var newArticleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget eros ultrices, dapibus lacus ultrices, ultrices tortor. Nam tincidunt blandit neque, at ornare sapien ultricies ut. Integer eget ultricies velit. Cras eu tellus ex. Integer bibendum nisi neque, sed auctor odio blandit sit amet. Aenean augue tellus, tincidunt vel commodo bibendum, rutrum nec augue. Donec pulvinar sem in purus congue sodales. Nam magna urna, maximus ut eros vel, rutrum semper sem. Duis a efficitur mauris. Nunc a aliquam nisi, vel iaculis justo. Donec lacus nulla, sollicitudin vitae lectus vel, tempus vestibulum ipsum. In dignissim consequat pellentesque. Pellentesque eget eleifend velit. Aenean aliquam auctor nibh vitae tristique. Nulla facilisi.';
+    addArticle(mainCol, newArticleHeader, newArticleText, index);
+
+    // 3
+    var link = changeLink();
+
+    // 4
+    linkBlank(link);
+
+    // 5
+
+    // 7
+    addSidebar();
+}
+
+/**
+ * Changes the title of the page.
+ * @param page String of the pathname of the page.
+ * @param title String of the new title.
+ */
+function changeTitle(page, title){
+    if (window.location.pathname === page) {
+        document.title = title;
+    }
 }
 
 // 2
@@ -42,24 +71,65 @@ function addArticle(element, header, text, pagePath) {
     }
 }
 
-var mainCol = document.getElementsByClassName('col-md-12');
-var newArticleHeader = 'This is my second article';
-var newArticleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget eros ultrices, dapibus lacus ultrices, ultrices tortor. Nam tincidunt blandit neque, at ornare sapien ultricies ut. Integer eget ultricies velit. Cras eu tellus ex. Integer bibendum nisi neque, sed auctor odio blandit sit amet. Aenean augue tellus, tincidunt vel commodo bibendum, rutrum nec augue. Donec pulvinar sem in purus congue sodales. Nam magna urna, maximus ut eros vel, rutrum semper sem. Duis a efficitur mauris. Nunc a aliquam nisi, vel iaculis justo. Donec lacus nulla, sollicitudin vitae lectus vel, tempus vestibulum ipsum. In dignissim consequat pellentesque. Pellentesque eget eleifend velit. Aenean aliquam auctor nibh vitae tristique. Nulla facilisi.';
-addArticle(mainCol, newArticleHeader, newArticleText, index);
+/**
+ *
+ * @returns {Node}
+ */
+function changeLink() {
+    var links = document.getElementById('links');
+    links = links.querySelectorAll('li');
+    var link = links.item(2);
+    link = link.firstChild;
+    link.setAttribute('href', 'https://google.com');
+    return link;
+}
 
-// 3
-var links = document.getElementById('links');
-links = links.querySelectorAll('li');
-var link = links.item(2);
-link = link.firstChild;
-link.setAttribute('href', 'https://google.com');
+/**
+ * Changes the link to open in a new tab.
+ * @param link Link element.
+ */
+function linkBlank(link) {
+    link.setAttribute('target', '_blank');
+}
 
-// 4
-link.setAttribute('target', '_blank')
 
 // 5
 var navItems = document.getElementsByClassName('nav-item');
 for (i = 0; i < navItems.length; i++) {
-    navItems[i].style.color = 'red';
+    var navItem = navItems[i];
+    navItem = navItem.firstChild;
+    document.write(navItem);
+    navItem.style.color = 'red';
 }
 // ToDo: check this functionality, CSS is changed, but not displayed though
+
+/**
+ *
+ */
+function addSidebar() {
+    if (window.location.pathname === second) {
+        var mainColumn = document.getElementsByClassName('col-md-12');
+        for (i = 0; i < mainColumn.length; i++) {
+            mainColumn[i].className = 'col-md-8';
+        }
+        var cont = document.getElementsByClassName('container');
+
+        var newCol = document.createElement('div');
+        newCol.className = 'col-md-4';
+        var newHeader = document.createElement('h1');
+        var newHeaderText = document.createTextNode('Sidebar');
+        newHeader.appendChild(newHeaderText);
+        newCol.appendChild(newHeader);
+
+        var newRow = document.createElement('div');
+        newRow.className = 'row';
+
+        //newRow.appendChild(mainColumn);
+        newRow.appendChild(newCol);
+
+        var pos = cont[0];
+
+        pos.appendChild(newRow);
+    }
+}
+
