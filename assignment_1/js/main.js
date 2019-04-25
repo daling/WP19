@@ -18,6 +18,7 @@ function main(){
     linkBlank(link);
 
     // 5
+    redMaker('nav-link');
 
     // 7
     addSidebar();
@@ -25,7 +26,7 @@ function main(){
 
 /**
  * Changes the title of the page.
- * @param page String of the pathname of the page.
+ * @param page String of the filename of the page.
  * @param title String of the new title.
  */
 function changeTitle(page, title){
@@ -44,14 +45,12 @@ function getFileName() {
     return pathName[pathName.length -1];
 }
 
-// 2
 /**
  * Adds a new article to any element you want, with any header and text you want.
  * @param element The element in which to insert the article.
  * @param header String with the header text.
  * @param text String with the text for the article.
  * @param pagePath String with the pathname of the page it needs to insert to.
- * ToDo: multiple paragraphs option?
  */
 function addArticle(element, header, text, pagePath) {
     var newArticle = document.createElement('article');
@@ -79,8 +78,8 @@ function addArticle(element, header, text, pagePath) {
 }
 
 /**
- *
- * @returns {Node}
+ * Changes the third link in a list to a specific site
+ * @returns {Node} Linknode, so it can be used in part 4.
  */
 function changeLink() {
     var links = document.getElementById('links');
@@ -100,15 +99,23 @@ function linkBlank(link) {
 }
 
 
-// 5
-var navItems = document.getElementsByClassName('nav-item');
-for (i = 0; i < navItems.length; i++) {
-    var navItem = navItems[i];
-    navItem = navItem.firstChild;
-    document.write(navItem);
-    navItem.style.color = 'red';
+/**
+ * Changes the color of elements it retrieves by the class name.
+ * @param className String with the name of the class you want to color things red from.
+ */
+function redMaker(className) {
+    var navItems = document.getElementsByClassName(className);
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].style.color = 'red';
+    }
 }
-// ToDo: check this functionality, CSS is changed, but not displayed though
+
+
+
+// 6
+// function arrayFill() {
+//     var array =
+// }
 
 /**
  *
