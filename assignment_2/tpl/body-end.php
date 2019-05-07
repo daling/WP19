@@ -3,6 +3,5 @@
  * User: daling
  */
 ?>
-        </div>
     </div>
 </div>
