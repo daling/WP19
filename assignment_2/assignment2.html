@@ -33,37 +33,36 @@
             <div class="alert alert-danger" id="form-alert" role="alert">
                 Not all form fields are filled in!
             </div>
-            <h3 class="assignment">Test</h3>
             <form>
                 <div class="form-group">
                     <label for="inputName">Name</label>
-                    <input type="text" class="form-control" id="inputName"
+                    <input type="text" class="form-control" id="inputName" required
                            aria-describedby="nameHelp" placeholder="Enter name">
                     <small id="nameHelp" class="form-text text-muted">Name can only contain letters.</small>
                 </div>
                 <div class="form-group">
                     <label for="inputAge">Age</label>
-                    <input type="number" class="form-control" id="inputAge"
+                    <input type="number" class="form-control" id="inputAge" required
                            aria-describedby="ageHelp" placeholder="Enter age">
                     <small id="ageHelp" class="form-text text-muted">Age can only contain numbers.</small>
                 </div>
                 <div class="form-group">
                     <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity"
+                    <input type="text" class="form-control" id="inputCity" required
                            aria-describedby="cityHelp" placeholder="Enter city">
                     <small id="cityHelp" class="form-text text-muted">City can only contain letters.</small>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Email address</label>
-                    <input type="email" class="form-control" id="inputEmail"
+                    <input type="email" class="form-control" id="inputEmail" required
                            aria-describedby="emailHelp" placeholder="Enter email address"
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     <small id="emailHelp" class="form-text text-muted">We'll never send you spam.</small>
                 </div>
                 <div class="form-group">
                     <label for="inputPhone">Phone number</label>
-                    <input type="tel" class="form-control" id="inputPhone" aria-describedby="phoneHelp"
-                           placeholder="+31 6 1234 5678" pattern=" ">
+                    <input type="tel" class="form-control" id="inputPhone" required
+                           aria-describedby="phoneHelp" placeholder="06 1234 5678" pattern="[0]{1}[1-9]{9}">
                     <small id="phoneHelp" class="form-text text-muted">Phone number can only contain numbers.</small>
                 </div>
                 <button class="btn btn-success mb-2">Submit</button> <button class="btn btn-danger mb-2">Erase</button>
