@@ -5,7 +5,8 @@
 ?>
 
 <footer>
-    Name: Daling
+    Name: Daling <br>
+    Snumber: sorry, ain't gonna put it up on a public github, thx
     <!-- Tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
