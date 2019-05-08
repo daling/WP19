@@ -7,6 +7,18 @@ function writeFormData(){
 }
 
 /**
+ * Toggles the active tab only if it is not active.
+ */
+function toggleFooterTab(){
+    if ( !$( this ).hasClass("active") ){
+        $("div.tab-pane").toggleClass("active");
+        $("div.links").toggleClass("active");
+        $("#link-tab").toggleClass("active");
+        $("#contact-tab").toggleClass("active");
+    }
+}
+
+/**
  * Document ready function
  */
 $(function() {
@@ -17,16 +29,9 @@ $(function() {
         $("#form")[0].reset();
     });
     $("#link-tab").click(function () {
-        $("div.tab-pane").toggleClass("active");
-        $("div.links").addClass("active");
-        $("#link-tab").addClass("active");
-        $("#contact-tab").removeClass("active");
-
+        toggleFooterTab();
     });
     $("#contact-tab").click(function () {
-        $("div.tab-pane").toggleClass("active");
-        $("div.contact").addClass("active");
-        $("#link-tab").removeClass("active");
-        $("#contact-tab").addClass("active");
+        toggleFooterTab();
     });
 });
