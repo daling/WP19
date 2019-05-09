@@ -13,13 +13,14 @@ function validateForm(){
 
     let errors = [];
 
-    $(".form-group input").each(function (index, element) {
+    let form = $("form input");
+    $(form).each(function (index, element) {
         let type = $(element).attr("type");
         let regex = regexes[type];
         let name = $(element).prev('label').text();
         if (element.value) {
             if (!regex.test(element.value)) {
-                errors.push(`${name} not filled in correctly. Please follow the regex: ${regex}`);
+                errors.push(`${name} not filled in correctly. Please follow this regex: ${regex}`);
             }
         } else {
             errors.push(`${name} field empty.`);
@@ -34,12 +35,28 @@ function validateForm(){
     return true;
 }
 
-// function writeFormData(){
-//     let inputValues = {};
-//     $(".form-group input").each(function (index, element) {
-//
-//     };
-// }
+/**
+ * Writes the data from the form input to the existing table. Goes through each form input value
+ * and adds it to a Javascript Object. For convenience sake it checks if both the object and the
+ * table have the same length. Then it goes to the correct table element and changes the text
+ * to each value of the object.
+ */
+function writeFormData(){
+    let inputValues = {};
+    let formInput = $(".form-group input");
+    $(formInput).each(function (index, element) {
+        inputValues[element.id] = element.value;
+    });
+    let table = $("#form-content tr");
+    if (Object.keys(inputValues).length === table.length){
+        table = table.first();
+        for (const value of Object.values(inputValues)){
+            table.children().last().text(value);
+            table = table.next();
+        }
+        $("#form-content").show();
+    }
+}
 
 /**
  * Toggles the active tab only if it is not active.
