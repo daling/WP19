@@ -74,13 +74,15 @@ function toggleFooterTab(){
  * Document ready function
  */
 $(function() {
-    $("#submit").click(function () {
+    $("#submit-btn").click(function () {
         if (validateForm()) {
             writeFormData();
         }
     });
-    $("#erase").click(function () {
-        $("#form")[0].reset();
+    $("#erase-btn").click(function () {
+        $("div.col-md-6 form")[0].reset();
+        $("#form-content").hide();
+        $("#form-alert").hide()
     });
     $("#link-tab").click(toggleFooterTab);
     $("#contact-tab").click(toggleFooterTab);
