@@ -8,10 +8,10 @@ $page_title = 'Webprogramming Assignment 2';
 $navigation = Array(
     'active' => 'Links',
     'items' => Array(
-        'Home' => '/WP19/assignment_2/index.php',
-        'Links' => '/WP19/assignment_2/links.php',
-        'News' => '/WP19/assignment_2/news.php',
-        'Future' => '/WP19/assignment_2/future.php'
+        'Home' => '/~s2344343/WP19/assignment_2/index.php',
+        'Links' => '/~s2344343/WP19/assignment_2/links.php',
+        'News' => '/~s2344343/WP19/assignment_2/news.php',
+        'Future' => '/~s2344343/WP19/assignment_2/future.php'
     )
 );
 $weblinks = Array(
