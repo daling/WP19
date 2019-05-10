@@ -36,29 +36,28 @@ function addLinkList() {
 
 }
 
-function validateLink() {
-    
-}
-
-function addLink(){
-    if (validateLink)
-}
-
-function deleteMode(){
-    document.write('Test')
-}
+// function validateLink() {
+//
+// }
+//
+// function addLink(){
+//     if (validateLink)
+// }
+//
+// function deleteMode(){
+//     document.write('Test')
+// }
 
 /**
  * Document ready function
  */
 $(function() {
     if (getFileName() === 'links.php') {
-        var links = {"RUG": "http://www.rug.nl", "Nestor": "http://www.nestor.rug.nl"};
         // addLinkList(links);
         $('#fade-btn').click(function () {
             $('ul.fadeclass').fadeToggle("slow", "linear");
         });
-        $('#add-btn').click(addLink);
-        $('#delete-btn').click(deleteMode);
+        // $('#add-btn').click(addLink);
+        // $('#delete-btn').click(deleteMode);
     }
 });
