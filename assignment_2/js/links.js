@@ -9,33 +9,56 @@ function getFileName() {
 }
 
 /**
+ * Adds the link list with a fade toggle button.
+ */
+function addLinkList() {
+    $('form').prepend(
+        $('<div>').attr('class', 'col-md-12').append(
+            $('<ul>').attr('class', 'fadeclass').append(
+                $('<li>').append(
+                    $('<a>').attr('href', 'http://www.rug.nl').attr('target', '_blank').append(
+                        "RUG"
+                    )
+                )
+            ).append(
+                $('<li>').append(
+                    $('<a>').attr('href', 'http://www.nestor.rug.nl').attr('target', '_blank').append(
+                        "Nestor"
+                    )
+                )
+            )
+        ).append(
+            $('<button>').attr('type', 'button').attr('class', 'btn btn-primary fade-btn').append(
+                "Fade"
+            )
+        )
+    );
+
+}
+
+function validateLink() {
+    
+}
+
+function addLink(){
+    if (validateLink)
+}
+
+function deleteMode(){
+    document.write('Test')
+}
+
+/**
  * Document ready function
  */
 $(function() {
     if (getFileName() === 'links.php') {
-        $('div.wp-row').append(
-            $('<div>').attr('class', 'col-md-12').append(
-                $('<ul>').attr('class', 'fadeclass').append(
-                    $('<li>').append(
-                        $('<a>').attr('href', 'http://www.rug.nl').attr('target', '_blank').append(
-                            "RUG"
-                        )
-                    )
-                ).append(
-                    $('<li>').append(
-                        $('<a>').attr('href', 'http://www.nestor.rug.nl').attr('target', '_blank').append(
-                            "Nestor"
-                        )
-                    )
-                )
-            ).append(
-                $('<button>').attr('type', 'button').attr('class', 'btn btn-primary fade-btn').append(
-                    "Fade"
-                )
-            )
-        );
-        $('button').click(function () {
+        var links = {"RUG": "http://www.rug.nl", "Nestor": "http://www.nestor.rug.nl"};
+        // addLinkList(links);
+        $('#fade-btn').click(function () {
             $('ul.fadeclass').fadeToggle("slow", "linear");
         });
+        $('#add-btn').click(addLink);
+        $('#delete-btn').click(deleteMode);
     }
 });
