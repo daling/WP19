@@ -12,12 +12,32 @@ $navigation = Array(
 );
 include __DIR__ . '/tpl/head.php';
 include __DIR__ . '/tpl/body_start.php';
+
+
+/**
+ * This function returns an array with the leap years for the next 25 years.
+ * It will still work for the next couple of decades, since it uses the built-in leap year
+ * checker. If you for example input the year 2097, it skips the year 2100.
+ * @return array
+ */
+function nextLeapYears(){
+    $nextLeapYears = [];
+    $year = date('Y');
+//    $year = 2097;
+    for($i=0; $i<25; $i++){
+        if(date('L', strtotime("$year-01-01"))){
+            array_push($nextLeapYears,$year);
+        }
+        $year++;
+    }
+    return $nextLeapYears;
+}
 ?>
     <div class="row wp-row">
         <div class="col-md-12">
             <h1>
                 <?php
-                if ($_GET["name"]) {
+                if ($_POST["name"]) {
                     echo "Welcome " . $_POST["name"] . "!";
                 } else {
                     echo "Welcome!";
@@ -26,13 +46,37 @@ include __DIR__ . '/tpl/body_start.php';
             </h1>
             <p>
                 <?php
-                if ($_GET["place"] == "Groningen") {
+                if ($_POST["place"] == "Groningen") {
                     echo "You're from the city of talent!";
-                } elseif ($_GET["place"]) {
-                    echo "You're from " . $_GET["place"] . "!";
+                } elseif ($_POST["place"]) {
+                    echo "You're from " . $_POST["place"] . "!";
                 }
                 ?>
             </p>
+            <?php
+            if (isset($_POST["age"])) { ?>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Age</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $age = $_POST["age"];
+                    $curYear = date('Y');
+                    $nextLeapYears = nextLeapYears();
+                    for($i=0; $i<5; $i++) {
+                        $nextAge = (int) $age - $curYear + $nextLeapYears[$i];
+                        echo "<tr><td>" . $nextLeapYears[$i] . "</td><td>" . $nextAge . "</td></tr>";
+                    }
+                    ?>
+                    </tbody>
+                </table>
+                <?php
+                }
+            ?>
             <form method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
