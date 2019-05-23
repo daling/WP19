@@ -15,16 +15,35 @@ include __DIR__ . '/tpl/body_start.php';
 ?>
 <div class="row wp-row">
     <div class="col-md-12">
-        <form method="POST">
+        <h1>
+            <?php
+            if ($_GET["name"]) {
+                echo "Welcome " . $_GET["name"] . "!";
+            } else {
+                echo "Welcome!";
+            }
+            ?>
+        </h1>
+        <p>
+            <?php
+            if ($_GET["place"] == "Amsterdam") {
+                echo "You're from the capital of the Netherlands!";
+            } else {
+                echo "You're from " . $_GET["place"] . "!";
+            }
+            ?>
+        </p>
+        <form method="GET">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
                 <label for="text">Place of residence</label>
-                <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence">
+                <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence"
+                       required>
             </div>
-            <button class="btn btn-success mb-2" id="submit-btn">Submit</button> <button class="btn btn-danger mb-2" id="erase-btn">Erase</button>
+            <button class="btn btn-primary mb-2" id="submit-btn">Submit</button>
         </form>
     </div>
 </div>
