@@ -28,7 +28,7 @@ include __DIR__ . '/tpl/body_start.php';
             <?php
             if ($_GET["place"] == "Amsterdam") {
                 echo "You're from the capital of the Netherlands!";
-            } else {
+            } elseif ($_GET["place"]) {
                 echo "You're from " . $_GET["place"] . "!";
             }
             ?>
@@ -39,7 +39,7 @@ include __DIR__ . '/tpl/body_start.php';
                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
-                <label for="text">Place of residence</label>
+                <label for="place">Place of residence</label>
                 <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence"
                        required>
             </div>
