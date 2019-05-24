@@ -13,7 +13,6 @@ $navigation = Array(
 include __DIR__ . '/tpl/head.php';
 include __DIR__ . '/tpl/body_start.php';
 
-
 /**
  * This function returns an array with the leap years for the next 25 years.
  * It will still work for the next couple of decades, since it uses the built-in leap year
@@ -33,6 +32,9 @@ function nextLeapYears(){
     return $nextLeapYears;
 }
 ?>
+    <!-- Scripts -->
+    <script src="scripts/leapyear.js"></script>
+
     <div class="row wp-row">
         <div class="col-md-12">
             <h1>
@@ -80,27 +82,25 @@ function nextLeapYears(){
             <form method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
                     <div class="valid-feedback">Cute name!</div>
                     <div class="invalid-feedback">Name entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required>
+                    <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
                     <div class="valid-feedback">Lovely age!</div>
                     <div class="invalid-feedback">Age entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="text">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address"
-                           required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
                     <div class="valid-feedback">Adorable email address!</div>
                     <div class="invalid-feedback">Email address entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="text">Place of residence</label>
-                    <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence"
-                           required>
+                    <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence">
                     <div class="valid-feedback">Superb place of residence!</div>
                     <div class="invalid-feedback">Place of residence entered invalid.</div>
                 </div>
