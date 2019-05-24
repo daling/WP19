@@ -19,7 +19,7 @@ function print_latest_news() {
  */
 function removeArticle(rm_btn) {
     let article_id = $(rm_btn).attr('article-id');
-    let rm_article = $.post("news_remove.php", {article_id: article_id});
+    let rm_article = $.post("scripts/news_remove.php", {article_id: article_id});
     rm_article.done(function (data) {
         print_latest_news();
     });

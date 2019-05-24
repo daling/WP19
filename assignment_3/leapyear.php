@@ -4,10 +4,10 @@ $page_title = 'Webprogramming Assignment 3';
 $navigation = Array(
     'active' => 'Leap Year',
     'items' => Array(
-        'News' => '/WP19/assignment_3/index.php',
-        'Add news item' => '/WP19/assignment_3/news_add.php',
-        'Leap Year' => '/WP19/assignment_3/leapyear.php',
-        'Simple Form' => '/WP19/assignment_3/simple_form.php'
+        'News' => 'index.php',
+        'Add news item' => 'news_add.php',
+        'Leap Year' => 'leapyear.php',
+        'Simple Form' => 'simple_form.php'
     )
 );
 include __DIR__ . '/tpl/head.php';
@@ -79,28 +79,32 @@ function nextLeapYears(){
                 <?php
                 }
             ?>
-            <form method="POST">
+            <form class="needs-validation" method="POST" novalidate>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                    <input type="text" class="form-control" id="name" name="name" required
+                           placeholder="Enter name">
                     <div class="valid-feedback">Cute name!</div>
                     <div class="invalid-feedback">Name entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
+                    <input type="number" class="form-control" id="age" name="age" required
+                           placeholder="Enter age">
                     <div class="valid-feedback">Lovely age!</div>
                     <div class="invalid-feedback">Age entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="text">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                    <input type="email" class="form-control" id="email" name="email" required
+                           placeholder="Enter email address">
                     <div class="valid-feedback">Adorable email address!</div>
                     <div class="invalid-feedback">Email address entered invalid.</div>
                 </div>
                 <div class="form-group">
                     <label for="text">Place of residence</label>
-                    <input type="text" class="form-control" id="place" name="place" placeholder="Enter place of residence">
+                    <input type="text" class="form-control" id="place" name="place" required
+                           placeholder="Enter place of residence">
                     <div class="valid-feedback">Superb place of residence!</div>
                     <div class="invalid-feedback">Place of residence entered invalid.</div>
                 </div>
